@@ -1,4 +1,4 @@
-##fr0g.gg
+## fr0g.gg
 
 Socialytics website for checking stats and monitoring progress in League of Legends.
 
