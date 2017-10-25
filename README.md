@@ -5,7 +5,7 @@ Socialytics website for checking stats and monitoring progress in League of Lege
 At launch users will be able to:
 
 * Sign up to check their own League profiles
-* Monitor trends for Analytical insight so they can improve their gameplay
+* Monitor trends for analytical insight so they can improve their gameplay
 * Check to see what champions they perform best or worst on
 * Connect with friends and receive notifications about their friends strengths, weaknesses, and recent performances!
 * Follow pros to learn builds and keep track of how they're doing in SoloQ!
