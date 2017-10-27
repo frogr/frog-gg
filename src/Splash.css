@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Oxygen");
+
+body {
+  font-family: "Oxygen", sans-serif;
+}
+.fr0g__title {
+  color: ;
+}
+.fr0g__text--p {
+}
+.fr0g__button--signup {
+}
+.fr0g__footer-splash {
+  background-color: #aaaaaa;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+}
+.fr0g__footer-info {
+}
+.fr0g__footer-contact {
+}

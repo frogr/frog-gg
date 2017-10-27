@@ -5,7 +5,11 @@ import Splash from "./Splash.js";
 
 class App extends Component {
   render() {
-    return;
+    return (
+      <div>
+        <Splash />
+      </div>
+    );
   }
 }
 

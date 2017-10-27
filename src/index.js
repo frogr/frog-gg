@@ -4,4 +4,4 @@ import "./index.css";
 import App from "./App";
 import Splash from "./Splash.js";
 
-ReactDOM.render(<Splash />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
