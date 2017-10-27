@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import "./Splash.css";
 
 const Splash = () => {
   return [

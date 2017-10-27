@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./App.css";
 import Splash from "./Splash.js";
 import Questions from "./Questions.js";
+import "./Splash.css";
 
 class App extends Component {
   render() {
