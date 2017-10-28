@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import Splash from "./Splash.js";
+import SplashBody from "./SplashBody.js";
 import Questions from "./Questions.js";
 import { Footer } from "../Global/Footer.js";
+import { NavBar } from "../Global/Navbar.js";
 import "./Splash.css";
 
-class App extends Component {
+class SplashApp extends Component {
   render() {
     return (
       <div>
-        <Splash />
+        <NavBar />
+        <SplashBody />
         <Questions />
         <Footer />
       </div>
@@ -16,4 +18,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default SplashApp;

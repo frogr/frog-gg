@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 
-const Splash = () => {
+const SplashBody = () => {
   return [
     <div className="fr0g__title">
       <h1>fr0g.gg</h1>
@@ -15,11 +15,8 @@ const Splash = () => {
         weaknesses, and provides a lot of tools and functionality to improve at
         the game.
       </p>
-    </div>,
-    <div className="fr0g__button--signup">
-      <Button> Sign up for Closed Beta! </Button>
     </div>
   ];
 };
 
-export default Splash;
+export default SplashBody;

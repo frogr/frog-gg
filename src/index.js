@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./Splash/App.js";
+import SplashApp from "./Splash/SplashApp.js";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<SplashApp />, document.getElementById("root"));
