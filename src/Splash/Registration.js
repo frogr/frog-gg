@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
-const Questions = () => {
+const Registration = () => {
   return [
     <div className="fr0g__questions">
       <form action="#">
@@ -17,4 +17,4 @@ const Questions = () => {
   ];
 };
 
-export default Questions;
+export default Registration;

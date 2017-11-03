@@ -5,7 +5,14 @@ export const NavBar = () => {
   return (
     <Navbar inverse>
       <Nav>
-        <NavItem> frogs </NavItem>
+        <NavItem>
+          <a href="#">fr0g.gg</a>
+        </NavItem>
+      </Nav>
+      <Nav pullRight>
+        <NavItem>
+          <a href="#">log in</a>
+        </NavItem>
       </Nav>
     </Navbar>
   );
