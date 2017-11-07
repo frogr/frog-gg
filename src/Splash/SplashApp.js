@@ -10,11 +10,11 @@ class SplashApp extends Component {
   render() {
     return (
       <div>
-        {/* <NavBar />
+        <NavBar />
         <SplashBody />
         <Registration />
-        <Footer /> */}
-        <Login />
+        <Footer />
+        {/* <Login /> */}
       </div>
     );
   }
