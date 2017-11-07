@@ -1,7 +1,7 @@
 process.env.LEAGUE_API_PLATFORM_ID = "na1";
 
 const LeagueJs = require("leaguejs");
-const api = new LeagueJs("RGAPI-XXXX");
+const api = new LeagueJs("RGAPI-XXXXX");
 
 api.Summoner
   .gettingByName("im frog")
