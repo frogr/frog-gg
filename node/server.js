@@ -1,18 +1,24 @@
 process.env.LEAGUE_API_PLATFORM_ID = "na1";
 
 const LeagueJs = require("leaguejs");
-const api = new LeagueJs("RGAPI-14a6a1a2-ecbf-415e-acd4-a2da595c59f9");
+const api = new LeagueJs("RGAPI-dfdea5e8-d8c7-4fa9-806b-0e46d01a6ce9");
 
-const getAccDetailsFromSummoner = summoner => {
+const getAccountInfoBySummoner = summoner => {
   api.Summoner
     .gettingByName(summoner)
     .then(account => {
       api.League.gettingPositionsForSummonerId(account.id).then(data => {
-        let leagueName = data[0].leagueName.toLowerCase();
-        let league = data[0].tier.toLowerCase();
-        let leagueDivision = data[0].rank;
-        let wins = data[0].wins;
-        let losses = data[0].losses;
+        let i = 0;
+        if (data[0].queueType === "RANKED_FLEX_SR") {
+          i++;
+        }
+        let leagueName = data[i].leagueName.toLowerCase();
+        let league = data[i].tier.toLowerCase();
+        let leagueDivision = data[i].rank;
+        let wins = data[i].wins;
+        let losses = data[i].losses;
+        console.log(data);
+        console.log(account);
         console.log(
           summoner +
             " is in " +
@@ -21,7 +27,7 @@ const getAccDetailsFromSummoner = summoner => {
             leagueDivision +
             " with " +
             wins +
-            " wins and " +
+            " and " +
             losses +
             " losses."
         );
@@ -32,4 +38,4 @@ const getAccDetailsFromSummoner = summoner => {
     });
 };
 
-getAccDetailsFromSummoner("im frog");
+getAccountInfoBySummoner("ßaby ßoy");
