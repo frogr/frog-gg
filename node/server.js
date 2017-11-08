@@ -9,7 +9,7 @@ const getAccountInfoBySummoner = summoner => {
     .then(account => {
       api.League.gettingPositionsForSummonerId(account.id).then(data => {
         let i = 0;
-        if (data[0].queueType === "RANKED_FLEX_SR") {
+        if (data[0].queueType !== "RANKED_SOLO_5x5") {
           i++;
         }
         let leagueName = data[i].leagueName.toLowerCase();
@@ -38,4 +38,4 @@ const getAccountInfoBySummoner = summoner => {
     });
 };
 
-getAccountInfoBySummoner("ßaby ßoy");
+getAccountInfoBySummoner("lemonerino");
