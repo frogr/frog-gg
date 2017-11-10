@@ -11,9 +11,10 @@ export const Footer = () => {
           </span>
         </p>
       </div>
-      <div className="fr0g__footer-contact" />
-      <p>contact me</p>
-      <p>twitter</p>
+      <div className="fr0g__footer-contact">
+        <p>contact me</p>
+        <p>twitter</p>
+      </div>
     </div>
   );
 };
