@@ -1,5 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import SplashApp from "./Splash/SplashApp.js";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import SplashApp from './Splash/SplashApp.js';
+import AppHome from './AppHome/AppHome.js';
 
-ReactDOM.render(<SplashApp />, document.getElementById("root"));
+ReactDOM.render(<AppHome />, document.getElementById('root'));

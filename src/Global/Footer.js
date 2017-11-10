@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 export const Footer = () => {
   return (
     <div className="fr0g__footer-splash">
       <div className="fr0g__footer-info">
         <p>
           fr0g.gg is not endorsed, sponsored, maintained, or otherwise
-          affiliated with riot games.
+          affiliated with riot games.{' '}
           <span>
             data is based on the League of Legends North America server.
           </span>

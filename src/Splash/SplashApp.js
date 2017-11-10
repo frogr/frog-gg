@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import SplashBody from "./SplashBody.js";
-import Registration from "./Registration.js";
-import { Footer } from "../Global/Footer.js";
-import { NavBar } from "../Global/Navbar.js";
-import { Login } from "../Global/Login.js";
-import "./Splash.css";
+import React, { Component } from 'react';
+import SplashBody from './SplashBody.js';
+import Registration from './Registration.js';
+import { Footer } from '../Global/Footer.js';
+import { NavBar } from '../Global/Navbar.js';
+import { Login } from '../Global/Login.js';
+import './Splash.css';
 
 class SplashApp extends Component {
   render() {
@@ -14,7 +14,7 @@ class SplashApp extends Component {
         <SplashBody />
         <Registration />
         <Footer />
-        {/* <Login /> */}
+        <Login />
       </div>
     );
   }
