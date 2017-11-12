@@ -1,7 +1,7 @@
 process.env.LEAGUE_API_PLATFORM_ID = 'na1';
 
 const LeagueJs = require('leaguejs');
-const api = new LeagueJs('RGAPI-88903406-15c3-459b-8c2a-7798c4abe873');
+const api = new LeagueJs('RGAPI-5cb1b9c3-4c0b-4877-836c-6a5c156d2f7f');
 
 const getAccountInfoBySummoner = summoner => {
   api.Summoner
@@ -18,7 +18,7 @@ const getAccountInfoBySummoner = summoner => {
         let wins = data[i].wins;
         let losses = data[i].losses;
         // console.log(data);
-        // console.log(account);
+        console.log(account);
         console.log(
           summoner +
             ' is in ' +
@@ -44,7 +44,7 @@ const getRecentMatchesBySummoner = summoner => {
     .then(account => {
       api.Match.gettingRecentListByAccount(account.accountId).then(match => {
         console.log('--RECENT GAMES--');
-        for (let i = 1; i < match.matches.length; i++) {
+        for (let i = 0; i < match.matches.length; i++) {
           console.log(`Game ${i}: ${match.matches[i].lane}`);
         }
       });
@@ -53,6 +53,18 @@ const getRecentMatchesBySummoner = summoner => {
       console.log(err);
     });
 };
+
+const getLiveGameBySummoner = summoner => {
+  api.Summoner.gettingByName(summoner).then(account => {
+    api.Spectator.gettingActiveGame(account.id).then(live => {
+      console.log(live);
+    });
+  });
+};
+
+// getAccountInfoBySummoner('chapanya');
+// getRecentMatchesBySummoner('im frog');
+getLiveGameBySummoner('chapanya');
 // { "matches": [
 //     {
 //         "lane": "JUNGLE",
@@ -66,6 +78,3 @@ const getRecentMatchesBySummoner = summoner => {
 //     }
 //   ]
 // };
-
-getAccountInfoBySummoner('im frog');
-getRecentMatchesBySummoner('im frog');
