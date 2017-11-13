@@ -55,16 +55,30 @@ const getRecentMatchesBySummoner = summoner => {
 };
 
 const getLiveGameBySummoner = summoner => {
-  api.Summoner.gettingByName(summoner).then(account => {
-    api.Spectator.gettingActiveGame(account.id).then(live => {
-      console.log(live);
+  api.Summoner
+    .gettingByName(summoner)
+    .then(account => {
+      api.Spectator.gettingActiveGame(account.id).then(live => {
+        console.log(live);
+      });
+    })
+    .catch(err => {
+      console.log(err);
     });
-  });
 };
 
 // getAccountInfoBySummoner('chapanya');
 // getRecentMatchesBySummoner('im frog');
-getLiveGameBySummoner('chapanya');
+getLiveGameBySummoner('ourania');
+
+//TODO need to figure out a way to assign champion IDs and summoner spell IDs and item IDs to their A) images and B) correct data
+// e.g. champ id 1 = "Annie" || item id x = "Dorans Blade" || item id x image = "doransblade.jpg" ||
+
+// if this information could show up on the webpage, the project is 1/2 doransblade
+// after that, need to work on creating champion statistics (how the fk does opgg do that)
+// then after champ statistics, something to do with the website like creating statuses and following other users
+// a feed that shares peoples games when they do well could be cool
+
 // { "matches": [
 //     {
 //         "lane": "JUNGLE",
