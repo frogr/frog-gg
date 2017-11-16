@@ -36,20 +36,21 @@ const getAccountInfoBySummoner = summoner => {
       console.log(err);
     });
 };
-
 const getRecentMatchesBySummoner = summoner => {
   api.Summoner.gettingByName(summoner)
     .then(account => {
       api.Match.gettingRecentListByAccount(account.accountId).then(match => {
         console.log('--RECENT GAMES--');
-        console.log('matches.length', match.matches.length);
-        for (let i = 0; i < match.matches.length; i++) {
-          api.StaticData.gettingChampionById(match.matches[i].champion).then(
-            champ => {
-              console.log(`Game ${i}: ${champ.name}`);
-            }
-          );
-        }
+        api.StaticData.gettingChampionById(match.matches[3].champion).then(
+          champion => {
+            console.log(champion.name);
+          }
+        );
+        api.StaticData.gettingChampionById(match.matches[4].champion).then(
+          champion => {
+            console.log(champion.name);
+          }
+        );
       });
     })
     .catch(err => {
@@ -69,9 +70,9 @@ const getLiveGameBySummoner = summoner => {
     });
 };
 
-const getChampion = id => {
+const getChampion = (i, id) => {
   api.StaticData.gettingChampionById(id).then(champ => {
-    console.log(champ);
+    console.log(`Game ${i}: ${champ.name}`);
   });
 };
 
