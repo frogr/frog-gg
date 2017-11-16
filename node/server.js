@@ -1,11 +1,10 @@
 process.env.LEAGUE_API_PLATFORM_ID = 'na1';
 
 const LeagueJs = require('leaguejs');
-const api = new LeagueJs('RGAPI-5cb1b9c3-4c0b-4877-836c-6a5c156d2f7f');
+const api = new LeagueJs('RGAPI-ed1e7b48-1319-43c0-9b40-c7bb8743ff3c');
 
 const getAccountInfoBySummoner = summoner => {
-  api.Summoner
-    .gettingByName(summoner)
+  api.Summoner.gettingByName(summoner)
     .then(account => {
       api.League.gettingPositionsForSummonerId(account.id).then(data => {
         let i = 0;
@@ -39,13 +38,17 @@ const getAccountInfoBySummoner = summoner => {
 };
 
 const getRecentMatchesBySummoner = summoner => {
-  api.Summoner
-    .gettingByName(summoner)
+  api.Summoner.gettingByName(summoner)
     .then(account => {
       api.Match.gettingRecentListByAccount(account.accountId).then(match => {
         console.log('--RECENT GAMES--');
+        console.log('matches.length', match.matches.length);
         for (let i = 0; i < match.matches.length; i++) {
-          console.log(`Game ${i}: ${match.matches[i].lane}`);
+          api.StaticData.gettingChampionById(match.matches[i].champion).then(
+            champ => {
+              console.log(`Game ${i}: ${champ.name}`);
+            }
+          );
         }
       });
     })
@@ -55,8 +58,7 @@ const getRecentMatchesBySummoner = summoner => {
 };
 
 const getLiveGameBySummoner = summoner => {
-  api.Summoner
-    .gettingByName(summoner)
+  api.Summoner.gettingByName(summoner)
     .then(account => {
       api.Spectator.gettingActiveGame(account.id).then(live => {
         console.log(live);
@@ -67,9 +69,16 @@ const getLiveGameBySummoner = summoner => {
     });
 };
 
-// getAccountInfoBySummoner('chapanya');
-// getRecentMatchesBySummoner('im frog');
-getLiveGameBySummoner('ourania');
+const getChampion = id => {
+  api.StaticData.gettingChampionById(id).then(champ => {
+    console.log(champ);
+  });
+};
+
+// getAccountInfoBySummoner('cuicideman');
+getRecentMatchesBySummoner('cuicideman');
+// getLiveGameBySummoner('ourania');
+// getChampion(67);
 
 //TODO need to figure out a way to assign champion IDs and summoner spell IDs and item IDs to their A) images and B) correct data
 // e.g. champ id 1 = "Annie" || item id x = "Dorans Blade" || item id x image = "doransblade.jpg" ||
@@ -92,3 +101,8 @@ getLiveGameBySummoner('ourania');
 //     }
 //   ]
 // };
+
+// I think we could set up the API like this:
+// GET ~/:name/summoner/ -> summoner details, rank, winrate, etc
+// GET ~/:name/summoner/live -> live game, current players, champions, ranks of all players
+// get ~/:name/account/ -> the actual account details for my platform, name, bio, posts, liked posts, etc
