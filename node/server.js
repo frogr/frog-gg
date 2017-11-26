@@ -41,15 +41,7 @@ const getRecentMatchesBySummoner = summoner => {
     .then(account => {
       api.Match.gettingRecentListByAccount(account.accountId).then(match => {
         console.log('--RECENT GAMES--');
-        api.StaticData.gettingChampionById(match.matches[3].champion).then(
-          champion => {
-            console.log(champion.name);
-          }
-        );
-        api.StaticData.gettingChampionById(match.matches[4].champion).then(
-          champion => {
-            console.log(champion.name);
-          }
+
         );
       });
     })
@@ -76,13 +68,15 @@ const getChampion = (i, id) => {
   });
 };
 
-// getAccountInfoBySummoner('cuicideman');
-getRecentMatchesBySummoner('cuicideman');
+// getAccountInfoBySummoner('im frog');
+getRecentMatchesBySummoner('im frog');
 // getLiveGameBySummoner('ourania');
 // getChampion(67);
 
 //TODO need to figure out a way to assign champion IDs and summoner spell IDs and item IDs to their A) images and B) correct data
 // e.g. champ id 1 = "Annie" || item id x = "Dorans Blade" || item id x image = "doransblade.jpg" ||
+
+// big find! the ids are plaintext in the endpoint. something like JSON(summonerurl/:id/) may work! 
 
 // if this information could show up on the webpage, the project is 1/2 doransblade
 // after that, need to work on creating champion statistics (how the fk does opgg do that)
