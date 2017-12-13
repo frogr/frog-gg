@@ -74,35 +74,30 @@ const getChampion = (i, id) => {
   });
 };
 
-const test = cid => {
-  const url =
-    'https://na1.api.riotgames.com/lol/static-data/v3/champions/67?locale=en_US&api_key=RGAPI-6ddc5f2e-65e8-41d7-876c-4eef09d94a9a';
-
+const test = cID => {
+  const url = 'https://frog-gg-api.herokuapp.com/' + cID;
+  console.log('URL <<', url);
   fetch(url)
-    .then(res => res.json())
+    .then(response => response.json())
     .then(data => {
+      console.log(data);
       return data;
     })
     .catch(e => {
       console.log('!E', e);
     });
 };
-test();
-// getAccountInfoBySummoner('im frog');
-// getRecentMatchesBySummoner('im frog');
-// getLiveGameBySummoner('ourania');
-// getChampion(67);
+// test(67); // -> cID is an integer. tests my custom API and its ability to fetch info from champion pages. https://frog-gg-api.herokuapp.com/.
+// getAccountInfoBySummoner('im frog'); // -> grabs account info. gets the sID and aID and some other neat info.
+// getRecentMatchesBySummoner('im frog'); // -> grabs 20 recent games. currently this function might be broken.
+// getLiveGameBySummoner('ourania'); // -> grabs info about the live game and who's in it. very important to implement into the website!
 
-//TODO need to figure out a way to assign champion IDs and summoner spell IDs and item IDs to their A) images and B) correct data
-// e.g. champ id 1 = "Annie" || item id x = "Dorans Blade" || item id x image = "doransblade.jpg" ||
-
-// big find! the ids are plaintext in the endpoint. something like JSON(summonerurl/:id/) may work!
-
-// if this information could show up on the webpage, the project is 1/2 doransblade
-// after that, need to work on creating champion statistics (how the fk does opgg do that)
+// if this information could show up on the webpage, the project is 1/2 done
+// after that, need to work on saving champion statistics (how the fk does opgg do that)
 // then after champ statistics, something to do with the website like creating statuses and following other users
-// a feed that shares peoples games when they do well could be cool
+// a feed that shares peoples games when they do well could be cool too!
 
+// example match history object
 // { "matches": [
 //     {
 //         "lane": "JUNGLE",
