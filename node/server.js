@@ -2,7 +2,7 @@ process.env.LEAGUE_API_PLATFORM_ID = 'na1';
 
 const LeagueJs = require('leaguejs');
 const fetch = require('node-fetch');
-const api = new LeagueJs('RGAPI-cc5110d1-1aec-44e7-af28-6b03c6e0a994');
+const api = new LeagueJs('RGAPI-a83ef7db-5266-45cf-bb13-504db45544dc');
 
 const getAccountInfoBySummoner = summoner => {
   api.Summoner.gettingByName(summoner)
@@ -68,29 +68,55 @@ const getLiveGameBySummoner = summoner => {
     });
 };
 
-const getChampion = (i, id) => {
-  api.StaticData.gettingChampionById(id).then(champ => {
-    console.log(`Game ${i}: ${champ.name}`);
-  });
-};
-
 const test = cID => {
   const url = 'https://frog-gg-api.herokuapp.com/' + cID;
-  console.log('URL <<', url);
   fetch(url)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      console.log(data.name);
       return data;
     })
     .catch(e => {
       console.log('!E', e);
     });
 };
+
+// TESTING WRITING A REAL FUNCTION TO HANDLE ALL OF THIS AT ONCE! //
+function SummonerData(summonerName) {
+  api.Summoner.gettingByName(summonerName).then(account => {
+    const sID = account.id;
+    const aID = account.accountId;
+    const name = account.name;
+    const lvl = account.summonerLevel;
+    console.log('sID: ', sID);
+    console.log('aID: ', aID);
+    console.log('name: ', name);
+    console.log('lvl: ', lvl);
+    api.Summoner.gettingByName(summonerName).then(account => {
+      api.Match.gettingRecentListByAccount(account.accountId).then(match => {
+        console.log('--RECENT GAMES--');
+        console.log(match.matches.length);
+        console.log(match.matches[0]);
+        for (let m = 0; m < match.matches.length; ++m) {
+          const role = match.matches[m].role;
+          const lane = match.matches[m].lane;
+          const champID = match.matches[m].champion;
+          console.log('----- game ' + m + '------');
+          console.log('role:', role);
+          console.log('lane:', lane);
+          console.log('champ:', champID);
+          test(champID);
+        }
+      });
+    });
+  });
+}
+
+// SummonerData('im frog');
 // test(67); // -> cID is an integer. tests my custom API and its ability to fetch info from champion pages. https://frog-gg-api.herokuapp.com/.
 // getAccountInfoBySummoner('im frog'); // -> grabs account info. gets the sID and aID and some other neat info.
-// getRecentMatchesBySummoner('im frog'); // -> grabs 20 recent games. currently this function might be broken.
-// getLiveGameBySummoner('ourania'); // -> grabs info about the live game and who's in it. very important to implement into the website!
+// getRecentMatchesBySummoner('lil daisy'); // -> grabs 20 recent games. currently this function might be broken.
+// getLiveGameBySummoner('Wero Reyes Lopez'); // -> grabs info about the live game and who's in it. very important to implement into the website!
 
 // if this information could show up on the webpage, the project is 1/2 done
 // after that, need to work on saving champion statistics (how the fk does opgg do that)
